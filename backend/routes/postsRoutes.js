@@ -4,9 +4,10 @@ const User=require('../models/User')
 const bcrypt=require('bcrypt')
 const Post=require('../models/Post')
 const Comment=require('../models/Comment')
+const verifyToken=require("../verifyToken")
 
 //CREATE
-router.post("/create",async (req,res)=>{
+router.post("/create",verifyToken,async (req,res)=>{
     try{
         const newPost=new Post(req.body)
         // console.log(req.body)
@@ -22,7 +23,7 @@ router.post("/create",async (req,res)=>{
 })
 
 //UPDATE
-router.put("/:id",async (req,res)=>{
+router.put("/:id",verifyToken,async (req,res)=>{
     try{
        
         const updatedPost=await Post.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
@@ -36,7 +37,7 @@ router.put("/:id",async (req,res)=>{
 
 
 //DELETE
-router.delete("/:id",async (req,res)=>{
+router.delete("/:id",verifyToken, async (req,res)=>{
     try{
         await Post.findByIdAndDelete(req.params.id)
         await Comment.deleteMany({postId:req.params.id})
