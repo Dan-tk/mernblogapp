@@ -9,7 +9,7 @@ import Header from "../components/Header"
 
 import { UserContext } from "../context/UserContext"
 import axios from "axios"
-import { URL } from "../../url"
+import { URL,IMAGE } from "../../url"
 
 const PostDetails = () => {
 
@@ -97,19 +97,19 @@ const PostDetails = () => {
       <div className="px-8 md:px-[200px] mt-8">
         <div className="flex justify-between items-center">
          <h1 className="text-2xl font-bold text-black md:text-3xl">{post.title}</h1>
-         <div className="flex items-center justify-center space-x-2">
+         {user?._id===post?.userId && <div className="flex items-center justify-center space-x-2">
             <p className="cursor-pointer" onClick={()=>navigate("/edit/"+postId)} ><BiEdit/></p>
             <p className="cursor-pointer" onClick={handleDeletePost}><MdDelete/></p>
-         </div>
+         </div>}
         </div>
         <div className="flex items-center justify-between mt-2 md:mt-4">
         <p>@{post.username}</p>       
         </div>
-        <img src={post.photo} className="w-full  mx-auto mt-8" alt=""/>
-         <p className="mx-auto mt-8">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius delectus, atque accusamus itaque cupiditate non esse ex rerum illum impedit optio quo, qui voluptates ullam nesciunt, consequatur amet error. Delectus.</p>
+        <img src={IMAGE + post.photo} className="w-full  mx-auto mt-8" alt=""/>
+         <p className="mx-auto mt-8">{post.desc}</p>
          <div className="flex items-center mt-8">
           <LikeButton />
-        </div>
+         </div>
         
          <div className="flex items-center mt-8 space-x-4 font-semibold">
           <p>Categories:</p>

@@ -58,12 +58,12 @@ const Header = () => {
               <li>
                 <Link to={`/profile/${user.accountId}`} className="nav-link">
                   
-                  <div className="menu-description">Profile</div>
+                  <div className="hidden menu-description">Profile</div>
                 </Link>
               </li>
               <li>        
                 
-                  <div onClick={handleLogout} className="menu-description">Logout</div>
+                  <div onClick={handleLogout} className="menu-description nav-link cursor-pointer text-cyan-500 ">Logout</div>
                 
               </li>
             </>
@@ -71,7 +71,7 @@ const Header = () => {
             <>
               <li>
                 <Link to="/" className="nav-link">
-                  <div className="menu-icon"><IoMdHome /></div>
+                  <div className="menu-icon m-0"><IoMdHome /></div>
                   <div className="menu-description">Home</div>
                 </Link>
               </li>

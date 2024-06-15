@@ -15,6 +15,7 @@ const EditPost = () => {
     const [title,setTitle]=useState("")
     const [desc,setDesc]=useState("")
     const [file,setFile]=useState(null)
+    const [existingFile, setExistingFile] = useState(null) // New state to keep track of the existing file
     const [cat,setCat]=useState("")
     const [cats,setCats]=useState([])
 
@@ -23,7 +24,8 @@ const EditPost = () => {
         const res=await axios.get(URL+"/api/posts/"+postId)
         setTitle(res.data.title)
         setDesc(res.data.desc)
-        setFile(res.data.photo)
+        setFile(null) // Reset file input
+        setExistingFile(res.data.photo) // Save the existing file
         setCats(res.data.categories)
 
       }
@@ -57,6 +59,8 @@ const EditPost = () => {
         catch(err){
           console.log(err)
         }
+      }else {
+        post.photo = existingFile // Keep the existing file if no new file is uploaded
       }
       //post upload
      
@@ -79,7 +83,7 @@ const EditPost = () => {
 
     const deleteCategory=(i)=>{
        let updatedCats=[...cats]
-       updatedCats.splice(i)
+       updatedCats.splice(i,1)
        setCats(updatedCats)
     }
 

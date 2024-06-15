@@ -1,7 +1,7 @@
 import React from 'react'
 import HomePosts from '../components/HomePosts'
 import Header from '../components/Header'
-import { URL } from '../../url'
+import { URL, IMAGE } from '../../url'
 import { useContext, useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { UserContext } from "../context/UserContext"
@@ -37,8 +37,8 @@ const Home = () => {
       <div className='px-8 md:px-[200px]'>
       {posts.map((post)=>(
           
-          <Link to={user?`/posts/post/${post._id}`:"/login"}>
-          <HomePosts key={post._id} post={post}/>
+          <Link key={post._id} to={user?`/posts/post/${post._id}`:"/login"}>
+          <HomePosts  post={post}/>
           </Link>
           
           

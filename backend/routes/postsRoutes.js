@@ -16,7 +16,7 @@ router.post("/create",verifyToken,async (req,res)=>{
         res.status(200).json(savedPost)
     }
     catch(err){
-        
+        console.log("smth wrong")
         res.status(500).json(err)
     }
      
