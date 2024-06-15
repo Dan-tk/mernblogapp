@@ -6,6 +6,10 @@ const cors=require('cors')
 const multer=require('multer')
 const path=require("path")
 const cookieParser=require('cookie-parser')
+const authRoute=require('./routes/authRoutes')
+const userRoute=require('./routes/usersRoutes')
+const postRoute=require('./routes/postsRoutes')
+const commentRoute=require('./routes/commentsRoute')
 
 //connect to database
 const connectDB=async()=>{
@@ -18,8 +22,13 @@ const connectDB=async()=>{
         console.log(err)
     }
 }
-
+/* Middlewre */
 dotenv.config()
+app.use(express.json())
+app.use("/api/auth",authRoute)
+app.use("/api/users",userRoute)
+app.use("/api/posts",postRoute)
+app.use("/api/comments",commentRoute)
 
 app.listen(process.env.PORT,()=>{
     connectDB()
