@@ -26,7 +26,7 @@ dotenv.config()
 app.use(express.json())
 app.use(cookieParser())
 app.use("/images", express.static(path.join(__dirname,"/images")))
-app.use(cors({origin:process.env.REACT_APP_API_URL, credentials:true}))
+app.use(cors())
 
 //routes
 app.use("/api/auth",authRoute)
