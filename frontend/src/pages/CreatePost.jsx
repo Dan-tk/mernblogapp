@@ -16,13 +16,14 @@ const CreatePost = () => {
     const [cats,setCats]=useState([])
 
     const navigate=useNavigate()
-
+    
+    //delete a category from the list
     const deleteCategory=(i)=>{
        let updatedCats=[...cats]
        updatedCats.splice(i)
        setCats(updatedCats)
     }
-
+     //delete a category from the list
     const addCategory=()=>{
         let updatedCats=[...cats]
         updatedCats.push(cat)
@@ -41,14 +42,19 @@ const CreatePost = () => {
         }
 
         if(file){
+          // Create a new FormData object to store the image file
           const data=new FormData()
+          // Generate a unique filename for the image
           const filename=Date.now()+file.name
+          // Append the image file to the FormData object with key "img"
           data.append("img",filename)
           data.append("file",file)
+          // Update the post object with the filename of the uploaded image
           post.photo=filename
           console.log(data)
           //img upload
           try{
+            // Upload the image file to the server
             const imgUpload=await axios.post(URL+"/api/upload",data)
              console.log(imgUpload.data)
           }
@@ -56,11 +62,13 @@ const CreatePost = () => {
             console.log(err)
           }
           console.log(data) 
-        }
-        //post upload
+        }        
         console.log(post)
+        //post upload
         try{
+          // Send a POST request to create the post on the server
           const res=await axios.post(URL+"/api/posts/create",post,{withCredentials:true})
+          // go to the post details page after yuo create
           navigate("/posts/post/"+res.data._id)
            console.log(res.data)
 

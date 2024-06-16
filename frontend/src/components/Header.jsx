@@ -14,14 +14,14 @@ const Header = () => {
 
   const {user}=useContext(UserContext)
   const {setUser}=useContext(UserContext)
-  const navigate=useNavigate()
- 
-  const accountId = 1 
+  const navigate=useNavigate() 
+  
   const handleLogout=async()=>{
     try {
+      // Send a GET request to the server to logout the user
       const res = await fetch(URL + '/api/auth/logout', { 
         method: 'GET', 
-        credentials: 'include'
+        credentials: 'include' //include cookies in the request
       });
   
       if (!res.ok) {
@@ -29,10 +29,11 @@ const Header = () => {
       }
   
       setUser(null);
+      // Navigate to the login page
       navigate('/login');
       
     } catch (err) {
-      
+      console.error('Error during logout:', err);
     }
   }
   return (
@@ -54,13 +55,7 @@ const Header = () => {
                   <div className="menu-icon"><FaCirclePlus /></div>
                   <div className="menu-description">Create</div>
                 </Link>
-              </li>
-              <li>
-                <Link to={`/profile/${user.accountId}`} className="nav-link">
-                  
-                  <div className="hidden menu-description">Profile</div>
-                </Link>
-              </li>
+              </li>              
               <li>        
                 
                   <div onClick={handleLogout} className="menu-description nav-link cursor-pointer text-cyan-500 ">Logout</div>

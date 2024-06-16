@@ -8,7 +8,7 @@ import { UserContext } from "../context/UserContext"
 
 
 const EditPost = () => {
-
+    // Get the post ID from the URL params
     const postId=useParams().id
     const {user}=useContext(UserContext)
     const navigate=useNavigate()
@@ -22,6 +22,7 @@ const EditPost = () => {
     const fetchPost=async()=>{
       try{
         const res=await axios.get(URL+"/api/posts/"+postId)
+        // Update state with the fetched post data
         setTitle(res.data.title)
         setDesc(res.data.desc)
         setFile(null) // Reset file input
@@ -33,7 +34,7 @@ const EditPost = () => {
         console.log(err)
       }
     }
-
+    //update the post
     const handleUpdate=async (e)=>{
       e.preventDefault()
       const post={
@@ -43,7 +44,7 @@ const EditPost = () => {
         userId:user._id,
         categories:cats
       }
-
+      // Check if a new file is uploaded
       if(file){
         const data=new FormData()
         const filename=Date.now()+file.name
@@ -76,7 +77,7 @@ const EditPost = () => {
     }
 
     
-
+     // Fetch the post data when the component mounts and whenever the post ID changes
     useEffect(()=>{
       fetchPost()
     },[postId])

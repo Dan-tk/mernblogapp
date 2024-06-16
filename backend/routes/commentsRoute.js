@@ -19,7 +19,7 @@ router.post("/create",verifyToken, async (req,res)=>{
      
 })
 
-//UPDATE
+//UPDATE a comment by ID
 router.put("/:id",verifyToken, async (req,res)=>{
     try{
        
@@ -33,7 +33,7 @@ router.put("/:id",verifyToken, async (req,res)=>{
 })
 
 
-//DELETE
+//DELETE a comment by ID
 router.delete("/:id",verifyToken, async (req,res)=>{
     try{
         await Comment.findByIdAndDelete(req.params.id)
@@ -49,7 +49,7 @@ router.delete("/:id",verifyToken, async (req,res)=>{
 
 
 
-//GET POST COMMENTS
+//GET all comments for a specific post
 router.get("/post/:postId",async (req,res)=>{
     try{
         const comments=await Comment.find({postId:req.params.postId})

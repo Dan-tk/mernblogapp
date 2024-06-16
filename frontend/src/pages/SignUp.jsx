@@ -16,6 +16,7 @@ const SignUp = () => {
     e.preventDefault()
     
        try {
+        // Send a POST request to the server to register the user
          const res = await fetch(URL + "/api/auth/signup", {
              method: "POST",
              headers: {
@@ -27,8 +28,10 @@ const SignUp = () => {
          if (!res.ok) {
              throw new Error('Network response was not ok ' + res.statusText);
          }   
-
+        // Parse the response data
          const data = await res.json();
+
+         // Update state with the user's information and reset error status
          setUsername(data.username);
          setEmail(data.email);
          setPassword(data.password);

@@ -12,7 +12,7 @@ import axios from "axios"
 import { URL,IMAGE } from "../../url"
 
 const PostDetails = () => {
-
+  //state to store the post and its details
   const postId=useParams().id
   const [post,setPost]=useState({})
   const {user}=useContext(UserContext)
@@ -20,7 +20,7 @@ const PostDetails = () => {
   const [comment,setComment]=useState("")
   const navigate=useNavigate()
   
-
+ //fetch the post details
   const fetchPost=async()=>{
     try{
       const res= await axios.get(URL+"/api/posts/"+postId)
@@ -32,7 +32,7 @@ const PostDetails = () => {
     }
     
   }
-
+  //handle post deletion
   const handleDeletePost=async ()=>{
 
     try{
@@ -46,31 +46,28 @@ const PostDetails = () => {
     }
 
   }
-
+  // Fetch post details when the component is mounted or id changes
   useEffect(()=>{
     fetchPost()
 
   },[postId])
 
-  const fetchPostComments=async()=>{
-   
+  const fetchPostComments=async()=>{   
     try{
       const res=await axios.get(URL+"/api/comments/post/"+postId)
-      setComments(res.data)
-     
+      setComments(res.data)    
 
     }
-    catch(err){
-     
+    catch(err){     
       console.log(err)
     }
   }
-
+  // Fetch comments on component mount or the post id changeees
   useEffect(()=>{
     fetchPostComments()
 
   },[postId])
-
+  // post a new comment
   const postComment=async(e)=>{
     e.preventDefault()
     try{

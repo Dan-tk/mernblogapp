@@ -7,7 +7,6 @@ const multer=require('multer')
 const path=require("path")
 const cookieParser=require('cookie-parser')
 const authRoute=require('./routes/authRoutes')
-const userRoute=require('./routes/usersRoutes')
 const postRoute=require('./routes/postsRoutes')
 const commentRoute=require('./routes/commentsRoute')
 
@@ -25,33 +24,43 @@ const connectDB=async()=>{
 /* Middlewre */
 dotenv.config()
 app.use(express.json())
+app.use(cookieParser())
 app.use("/images", express.static(path.join(__dirname,"/images")))
 app.use(cors({origin:process.env.REACT_APP_API_URL, credentials:true}))
-app.use(cookieParser())
+
+//routes
 app.use("/api/auth",authRoute)
-app.use("/api/users",userRoute)
 app.use("/api/posts",postRoute)
 app.use("/api/comments",commentRoute)
 
 //image upload
-const storage=multer.diskStorage({
-    destination:(req,file,fn)=>{
-        fn(null,"images")
+// Set up storage configuration for Multer
+const storage = multer.diskStorage({
+    // Define the destination directory for uploaded files
+    destination: (req, file, fn) => {
+        // 'fn' is a callback function that takes two arguments: error and destination directory
+        // 'null' means no error, and "images" is the directory where files will be stored
+        fn(null, "images");
     },
-    filename:(req,file,fn)=>{
-        fn(null,req.body.img)
-        
+    // Define the filename for uploaded files
+    filename: (req, file, fn) => {
+        // 'fn' is a callback function that takes two arguments: error and filename
+        // 'req.body.img' is the filename, which is expected to be provided in the request body
+        fn(null, req.body.img);
     }
-})
+});
 
-const upload=multer({storage:storage})
-app.post("/api/upload",upload.single("file"),(req,res)=>{
-    
-    res.status(200).json("Image has been uploaded successfully!")
-})
+// Create an instance of Multer with the storage configuration
+const upload = multer({ storage: storage });
 
+// Set up an API endpoint to handle file uploads
+app.post("/api/upload", upload.single("file"), (req, res) => {
+    // If the upload is successful, send a success response
+    res.status(200).json("Image has been uploaded successfully!");
+});
 
-app.listen(process.env.PORT,()=>{
-    connectDB()
-    console.log("app is running on port "+process.env.PORT)
-})
+// Start the server and listen on the specified port
+app.listen(process.env.PORT, () => {   
+    connectDB();    
+    console.log("app is running on port " + process.env.PORT);
+});

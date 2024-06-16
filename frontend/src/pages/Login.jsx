@@ -15,11 +15,11 @@ const Login = () => {
   const handleLogin=async()=>{
     try{
       const response = await fetch(URL + "/api/auth/login", {
-        method: 'POST', // Specifies the HTTP method
+        method: 'POST', // post method
         headers: {
           "Content-Type": "application/json", // Tells the server the data format
         },
-        credentials: 'include', // This is equivalent to { withCredentials: true } in axios to enable cookies
+        credentials: 'include', //  enable cookies
         body: JSON.stringify({ email, password }), // The data being sent
       });
   

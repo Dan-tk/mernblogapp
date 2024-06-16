@@ -1,8 +1,10 @@
 import { Children, createContext , useEffect, useState} from "react";
 import { URL } from "../../url";
 
+// Create a new context object with an initial value of an empty object
 export const UserContext=createContext({})
 
+// Define a component that provides the UserContext to its children
 export function UserContextProvider({children}){
     const [user,setUser]=useState(null)
 
@@ -32,6 +34,7 @@ export function UserContextProvider({children}){
     }
 
     return( 
+      // Render the UserContext.Provider component with the user state and setUser function as the context value
       <UserContext.Provider value={{user,setUser}}>
        {children}
       </UserContext.Provider>
