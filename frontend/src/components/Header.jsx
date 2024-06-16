@@ -66,6 +66,12 @@ const Header = () => {
                   <div onClick={handleLogout} className="menu-description nav-link cursor-pointer text-cyan-500 ">Logout</div>
                 
               </li>
+              <li>
+              <a href="https://huggingface.co/spaces/EmeraldUser1/bottest2" className="nav-link" target="_blank" rel="noopener noreferrer">
+                <div className="menu-icon">AI Helper</div>
+              </a>
+
+              </li>
             </>
           ) : (
             <>
@@ -84,6 +90,12 @@ const Header = () => {
                 <Link to="/signup" className="nav-link">
                   <div className="menu-icon">Sign Up</div>
                 </Link>
+              </li>
+              <li>
+              <a href="https://huggingface.co/spaces/EmeraldUser1/bottest2" className="nav-link" target="_blank" rel="noopener noreferrer">
+                  <div className="menu-icon">AI Helper</div>
+              </a>
+
               </li>
             </>
           )}
