@@ -20,7 +20,7 @@ export function UserContextProvider({children}){
               });
           
               if (!res.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+                throw new Error('Network response was not ok ' + res.statusText);
               }          
               const data = await res.json(); // Parse the JSON response
               setUser(data); // Use the response data to set user
