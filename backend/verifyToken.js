@@ -15,7 +15,8 @@ const verifyToken = (req, res, next) => {
             return res.status(403).json("Token is not valid!");
         }        
         // If token is valid, extract user information (e.g., user ID) from the token payload
-        req.userId = data._id;       
+        req.userId = data._id;    
+        console.log("Verification Passed", data); // Add logging   
         
         next();
     });
