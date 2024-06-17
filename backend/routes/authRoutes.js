@@ -60,6 +60,9 @@ router.post("/login", async(req, res) => {
         // Create a JWT token and set it as a cookie
         const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, process.env.SECRET, { expiresIn: "3d" });
         // Return user object without the password
+
+        console.log(user._id)
+
         const { password, ...info } = user._doc;
         res.cookie("token", token,{
             httpOnly: true,
