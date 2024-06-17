@@ -77,7 +77,7 @@ router.post("/login", async(req, res) => {
 router.get("/logout", async(req, res) => {
     try {
         // Clear the JWT cookie
-        res.clearCookie("token", { sameSite: "none", secure: true }).status(200).send("User logged out successfully!");
+        res.clearCookie("token", { httpOnly: true, sameSite: "None", secure: true }).status(200).send("User logged out successfully!");
     } catch (err) {
         res.status(500).json(err);
     }
