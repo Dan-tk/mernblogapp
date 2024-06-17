@@ -63,8 +63,8 @@ router.post("/login", async(req, res) => {
         const { password, ...info } = user._doc;
         res.cookie("token", token,{
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            sameSite: 'Strict', // Adjust based on your needs (Strict, Lax, or None)
+            secure: true, // Use secure cookies in production
+            sameSite: 'None', // Adjust based on your needs (Strict, Lax, or None)
             maxAge: 1000 * 60 * 60 * 24 * 3 // 3 days
 
         }).status(200).json(info);
