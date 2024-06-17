@@ -21,8 +21,8 @@ router.post("/signup", async(req, res) => {
         res.status(500).json(err);
     }
 });
-
-/* Login an existing user */
+/* 
+//Login an existing user 
 router.post("/login", async(req, res) => {
     try {
         // Find the user by email
@@ -43,6 +43,34 @@ router.post("/login", async(req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+}); */
+/* Login an existing user */
+router.post("/login", async(req, res) => {
+    try {
+        // Find the user by email
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(404).json("User not found!");
+        }
+        // Compare the provided password with the hashed password
+        const match = await bcrypt.compare(req.body.password, user.password);
+        if (!match) {
+            return res.status(401).json("Wrong credentials!");
+        }
+        // Create a JWT token and set it as a cookie
+        const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, process.env.SECRET, { expiresIn: "3d" });
+        // Return user object without the password
+        const { password, ...info } = user._doc;
+        res.cookie("token", token,{
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+            sameSite: 'Strict', // Adjust based on your needs (Strict, Lax, or None)
+            maxAge: 1000 * 60 * 60 * 24 * 3 // 3 days
+
+        }).status(200).json(info);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 /* Logout the user */
@@ -54,8 +82,26 @@ router.get("/logout", async(req, res) => {
         res.status(500).json(err);
     }
 });
-
 /* Refetch user information */
+router.get("/refetch", (req, res) => {
+    // Get the token from the cookie
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(401).json({ message: "No token found" });
+    }
+
+    // Verify the token and return user data
+    jwt.verify(token, process.env.SECRET, {}, async (err, data) => {
+        if (err) {
+            return res.status(401).json({ message: "Token is not valid", error: err });
+        }
+        res.status(200).json(data);
+    });
+});
+
+/* 
+// Refetch user information 
 router.get("/refetch", (req, res) => {
     // Get the token from the cookie
     const token = req.cookies.token;
@@ -66,5 +112,5 @@ router.get("/refetch", (req, res) => {
         }
         res.status(200).json(data);
     });
-});
+}); */
 module.exports =router
