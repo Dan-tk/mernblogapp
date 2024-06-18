@@ -38,7 +38,7 @@ const Header = () => {
   }
   return (
     
-    <section className="nav-pane  bg-gray-800 h-screen flex flex-col justify-between">    
+    <section className="nav-pane  bg-gray-800 h-screen ">    
         <nav>
           <ul className="nav-menu flex flex-col justify-between h-full">
             {user ? (
