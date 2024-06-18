@@ -41,7 +41,7 @@ const Header = () => {
     <section className="nav-pane  bg-gray-800 h-screen flex flex-col justify-between">       
 
     <nav>
-        <ul className="nav-menu">
+        <ul className="nav-menu flex flex-col">
           {user ? (
             <>
               <li>
