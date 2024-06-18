@@ -37,8 +37,8 @@ const Header = () => {
     }
   }
   return (
-    <>
-    <section className="nav-pane">       
+    
+    <section className="nav-pane  bg-gray-800 h-screen flex flex-col justify-between">       
 
     <nav>
         <ul className="nav-menu">
@@ -93,7 +93,7 @@ const Header = () => {
       </nav>
     </section>
       
-    </>
+    
   )
 }
 

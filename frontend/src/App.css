@@ -1,3 +1,4 @@
+
 :root {
     --line-opacity: 0.4;
     --padding-sm: 0.3rem;
@@ -10,7 +11,7 @@
     /* Rectangle 183 */
   
   }
-  
+  /*
   
   .logo {
     height: 1em;
@@ -43,7 +44,7 @@
   
   
   
-  /*====== NAVIGATION PANE ====== */
+  /*====== NAVIGATION PANE ====== 
   .nav-pane {
    
     position: fixed;
@@ -130,10 +131,10 @@
     font-weight: 300;
     color: #130f0f;
   }
-  /* ===== NAVIGATION PANE ===== */
+  /* ===== NAVIGATION PANE ===== 
   
   
-  /* ===== HOME PAGE ===== */
+  /* ===== HOME PAGE ===== 
   .body {
     min-height: auto;
     width: 85vw;
@@ -194,12 +195,12 @@
     opacity: var(--line-opacity);
   }
   
-  /* ====================== HOME PAGE  ==================== */
+  /* ====================== HOME PAGE  ==================== 
   
   
-  /* ====================== USER PAGE ===================  */
+  /* ====================== USER PAGE ===================  
   
-  /* ======== MODAL CONTAINER ========== */
+  /* ======== MODAL CONTAINER ========== 
   .modal-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -239,11 +240,11 @@
   .modal-photo {
     height: 100%;
   }
-  /* ======== MODAL CONTAINER ========== */
+  /* ======== MODAL CONTAINER ========== 
   
   
   
-  /* ====================== CREATE POST PAGE ==================== */
+  /* ====================== CREATE POST PAGE ====================
   .create-blog-container{
     display: flex;
     flex-direction: column;
@@ -271,11 +272,11 @@
     margin: 0 auto;
     height: var(--input-md);
   }
-  /* ====================== CREATE POST PAGE ==================== */
+  /* ====================== CREATE POST PAGE ==================== 
   
   
   
-  /* ====================== SIGNUP PAGE ==================== */
+  /* ====================== SIGNUP PAGE ====================
   .sign-up-body {
     display: grid;
     min-height: 100vh;
@@ -299,11 +300,11 @@
     align-items: center;
     gap: var(--gap-lg);
   }
-  /* ====================== SIGNUP PAGE ==================== */
+  /* ====================== SIGNUP PAGE ==================== 
 
 
-  /* testing styles for the header/navbar */
-  /* styles.css */
+  /* testing styles for the header/navbar 
+  /* styles.css 
 .nav-pane {
   position: fixed;
   width: 15%;
@@ -335,6 +336,52 @@
   text-decoration: none;
   font-size: small;
   
+}
+
+@media (max-width: 768px) {
+  .nav-pane {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-menu {
+    margin-top: 1rem;
+  }
+}
+
+*/
+/* Simplified vanilla CSS for the header/navbar */
+
+.nav-pane {
+  position: fixed;
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #333;
+  color: white;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+}
+
+.brand-name {
+  margin-left: 0.5rem;
+}
+
+.nav-menu {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: small;
 }
 
 @media (max-width: 768px) {
