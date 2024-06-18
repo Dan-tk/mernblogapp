@@ -71,9 +71,9 @@ const PostDetails = () => {
   }, [postId]);
 
   return (
-    <div>
+    <div className="flex relative">
       <Header />
-      <div className="px-8 md:px-[200px] mt-8">
+      <div className="px-8 md:px-[200px] mt-8 ml-auto">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-black md:text-3xl">{post.title}</h1>
           {user?._id === post?.userId && (
