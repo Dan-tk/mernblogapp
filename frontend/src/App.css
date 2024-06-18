@@ -359,6 +359,7 @@
   /* justify-content: space-between;
   align-items: center;
   padding: 5px; */
+  width: 15%;
   display: flex;
   background-color: #333;
   color: white;
