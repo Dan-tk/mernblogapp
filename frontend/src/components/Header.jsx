@@ -38,59 +38,61 @@ const Header = () => {
   }
   return (
     
-    <section className="nav-pane  bg-gray-800 h-screen flex flex-col justify-between">       
-
-    <nav>
-        <ul className="nav-menu flex flex-col">
-          {user ? (
-            <>
-              <li>
-                <Link to="/" className="nav-link">
-                  <div className="menu-icon"><IoMdHome /></div>
-                  <div className="menu-description">Home</div>
-                </Link>
-              </li>
-              <li>
-                <Link to="/create" className="nav-link">
-                  <div className="menu-icon"><FaCirclePlus /></div>
-                  <div className="menu-description">Create</div>
-                </Link>
-              </li>              
-              <li>        
-                
-                  <div onClick={handleLogout} className="menu-description nav-link cursor-pointer text-cyan-500 ">Logout</div>
-                
-              </li>
-              <li className='nav-link cursor-pointer'>
-               <Link to="/AI">Chat with AI</Link>             
-
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to="/" className="nav-link">
-                  <div className="menu-icon m-0"><IoMdHome /></div>
-                  <div className="menu-description">Home</div>
-                </Link>
-              </li>
-              <li>
-                <Link to="/login" className="nav-link">
-                  <div className="menu-icon">Login</div>
-                </Link>
-              </li>
-              <li>
-                <Link to="/signup" className="nav-link">
-                  <div className="menu-icon">Sign Up</div>
-                </Link>
-              </li>
-              <li>
-                <Link to="/AI">Chat with AI</Link>      
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
+    <section className="nav-pane  bg-gray-800 h-screen flex flex-col justify-between">    
+        <nav>
+          <ul className="nav-menu flex flex-col justify-between h-full">
+            {user ? (
+              <>
+                <li className="flex items-center">
+                  <Link to="/" className="nav-link flex items-center">
+                    <div className="menu-icon"><IoMdHome /></div>
+                    <div className="menu-description">Home</div>
+                  </Link>
+                </li>
+                <li className="flex items-center">
+                  <Link to="/create" className="nav-link flex items-center">
+                    <div className="menu-icon"><FaCirclePlus /></div>
+                    <div className="menu-description">Create</div>
+                  </Link>
+                </li>              
+                <li className='nav-link cursor-pointer'>
+                  <div onClick={handleLogout} className="flex items-center">
+                    <div className="menu-icon text-cyan-500">Logout</div>
+                  </div>
+                </li>
+                <li className='nav-link cursor-pointer'>
+                  <Link to="/AI" className="flex items-center">
+                    <div className="menu-icon">Chat with AI</div>
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="flex items-center">
+                  <Link to="/" className="nav-link flex items-center">
+                    <div className="menu-icon m-0"><IoMdHome /></div>
+                    <div className="menu-description">Home</div>
+                  </Link>
+                </li>
+                <li className="flex items-center">
+                  <Link to="/login" className="nav-link flex items-center">
+                    <div className="menu-icon">Login</div>
+                  </Link>
+                </li>
+                <li className="flex items-center">
+                  <Link to="/signup" className="nav-link flex items-center">
+                    <div className="menu-icon">Sign Up</div>
+                  </Link>
+                </li>
+                <li className="flex items-center">
+                  <Link to="/AI" className="nav-link flex items-center">
+                    <div className="menu-icon">Chat with AI</div>
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
     </section>
       
     
