@@ -72,7 +72,7 @@ const PostDetails = () => {
 
   return (
     <div className="flex relative">
-      <div className="w-1/5" >
+      <div className="w-3/20 h-full" >
       <Header />
       </div>      
       <div className="flex-1 px-8 md:px-[200px] mt-8 ">
