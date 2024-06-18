@@ -7,7 +7,7 @@ import { useContext } from "react"
 import { UserContext } from "../context/UserContext"
 
 // Comment component receives two props: c (comment object) and post (post object)
-const Comment = ({c,post}) => {
+const Comment = ({c,post, setComments}) => {
 
    // Access user data from the UserContext
   const {user}=useContext(UserContext)
@@ -16,8 +16,8 @@ const Comment = ({c,post}) => {
     try {
       // Send a delete request to the server to delete the comment with the specified ID
       await axios.delete(URL + "/api/comments/" + id, { withCredentials: true })
-      // Reload the page to reflect the deleted comment
-      window.location.reload(true)
+      // Update the comments state in the parent component by calling setComments
+      setComments((prevComments) => prevComments.filter((comment) => comment._id !== id))
     } catch (err) {
       // Log any errors that occur during the delete request
       console.log(err)
