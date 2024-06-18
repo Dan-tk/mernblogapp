@@ -9,6 +9,7 @@ import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
 import PostDetails from './pages/PostDetails';
 import { UserContextProvider } from './context/UserContext';
+import AIchat from './pages/AIchat';
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/create" element={<CreatePost/>}/>
         <Route exact path="/posts/post/:id" element={<PostDetails/>}/>
         <Route exact path="/edit/:id" element={<EditPost/>}/>       
+        <Route exact path="/AI" element={<AIchat/>}/>       
        </Routes>
        </UserContextProvider>
 

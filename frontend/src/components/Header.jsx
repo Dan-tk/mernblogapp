@@ -61,10 +61,8 @@ const Header = () => {
                   <div onClick={handleLogout} className="menu-description nav-link cursor-pointer text-cyan-500 ">Logout</div>
                 
               </li>
-              <li>
-              <a href="https://huggingface.co/spaces/EmeraldUser1/bottest2" className="nav-link" target="_blank" rel="noopener noreferrer">
-                <div className="menu-icon">AI Helper</div>
-              </a>
+              <li className='nav-link cursor-pointer'>
+               <Link to="/AI">Chat with AI</Link>             
 
               </li>
             </>
@@ -87,10 +85,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-              <a href="https://huggingface.co/spaces/EmeraldUser1/bottest2" className="nav-link" target="_blank" rel="noopener noreferrer">
-                  <div className="menu-icon">AI Helper</div>
-              </a>
-
+                <Link to="/AI">Chat with AI</Link>      
               </li>
             </>
           )}
